@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Find Repeat Words Option Test">
+    <test name="Find Repeat Words Option Test">
+        <classes>
+            <class name="FindRepeatWordsOptionTest"/>
+        </classes>
+    </test>
+</suite>

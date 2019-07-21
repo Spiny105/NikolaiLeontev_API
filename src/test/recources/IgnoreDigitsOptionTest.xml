@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Ignore Digits Option Test">
+    <test name="Ignore Digits Option Test">
+        <classes>
+            <class name="IgnoreDigitsOptionTest"/>
+        </classes>
+    </test>
+</suite>

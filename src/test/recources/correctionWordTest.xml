@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Correction Word Test">
+    <test name="Correction Word Test">
+        <classes>
+            <class name="CorrectionWordTest"/>
+        </classes>
+    </test>
+</suite>
