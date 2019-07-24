@@ -6,7 +6,6 @@ import service.SpellerSteps;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class SimpleTextsTest {
 
@@ -16,8 +15,8 @@ public class SimpleTextsTest {
         List<String> texts = Arrays.asList("Inglish", "Brohter");
         SpellerDto[][] result = SpellerSteps.getCheckTextsWithRequest(texts, Options.NO_OPTIONS);
 
-        SpellerAssertions.assertText(result[0], "English");
-        SpellerAssertions.assertText(result[1], "Brother");
+        SpellerAssertions.assertCorrectedTextInResponce(result[0], "English");
+        SpellerAssertions.assertCorrectedTextInResponce(result[1], "Brother");
     }
 
 }

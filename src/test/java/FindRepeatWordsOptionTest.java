@@ -7,7 +7,7 @@ import service.SpellerAssertions;
 import service.SpellerSteps;
 
 /*
- * Some tests are falling now. Maybe something is't working fine on speller.yandex.net?
+ * Some tests are failing now. Maybe something is't working fine on speller.yandex.net?
  * */
 public class FindRepeatWordsOptionTest {
 
@@ -22,12 +22,18 @@ public class FindRepeatWordsOptionTest {
     }
 
     @DataProvider
-    public Object[][] optionInActiveDataProvider() {
+    public Object[][] optionInActiveDataProviderWithMistakes() {
         return new Object[][]{
                 {"sworde sworde", ErrorCodes.ERROR_UNKNOWN_WORD},
-                {"sword sword", null},
-                {"sworde", ErrorCodes.ERROR_UNKNOWN_WORD},
-                {"bread bread", null}
+                {"sworde", ErrorCodes.ERROR_UNKNOWN_WORD}
+        };
+    }
+
+    @DataProvider
+    public Object[] optionInActiveDataProviderNoMistakes() {
+        return new Object[]{
+                "sword sword",
+                "bread bread"
         };
     }
 
@@ -37,10 +43,16 @@ public class FindRepeatWordsOptionTest {
         SpellerAssertions.assertErrorCode(result, expectedErrorCode);
     }
 
-    @Test(dataProvider = "optionInActiveDataProvider")
+    @Test(dataProvider = "optionInActiveDataProviderWithMistakes")
     public void optionInActiveTest(String input, ErrorCodes expectedErrorCode) {
         SpellerDto[] result = SpellerSteps.getCheckTextWithRequest(input, Options.NO_OPTIONS);
         SpellerAssertions.assertErrorCode(result, expectedErrorCode);
+    }
+
+    @Test(dataProvider = "optionInActiveDataProviderNoMistakes")
+    public void optionInActiveTest(String input) {
+        SpellerDto[] result = SpellerSteps.getCheckTextWithRequest(input, Options.NO_OPTIONS);
+        SpellerAssertions.assertResponceWithCorrectTextInRequest(result);
     }
 
 }

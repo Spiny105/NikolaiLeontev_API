@@ -20,7 +20,7 @@ public class CorrectionWordTest {
     @Test(dataProvider = "dataProvider")
     public void chechWordTest(String input, String correctWord) {
         SpellerDto[] result = SpellerSteps.getCheckTextWithRequest(input, Options.NO_OPTIONS);
-        SpellerAssertions.assertText(result, correctWord);
+        SpellerAssertions.assertCorrectedTextInResponce(result, correctWord);
     }
 
 }
